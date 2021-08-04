@@ -1,5 +1,7 @@
 package nakama;
 
-extern class Account {
+typedef Account = {
+
+    user_id:String,
     
 }

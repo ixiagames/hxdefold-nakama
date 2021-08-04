@@ -6,6 +6,6 @@ typedef ClientConfig = {
     port:Int,
     username:String,
     password:String,
-    engine:Defold
+    engine:Dynamic
 
 }
