@@ -7,6 +7,7 @@ extern class Nakama {
         untyped __lua__('_G.__nakama = require "nakama.nakama"');
     }
 
+    @:luaDotMethod static function sync(func:Void->Void):Void;
     @:luaDotMethod static function create_client(config:ClientConfig):Client;
     @:luaDotMethod static function create_api_account_device(uuid:String):Dynamic;
     @:luaDotMethod static function create_api_account_email(email:String, password:String, ?vars:Dynamic):Dynamic;
@@ -16,7 +17,8 @@ extern class Nakama {
     @:luaDotMethod static function set_bearer_token(client:Client, bearer_token:Dynamic):Void;
     @:luaDotMethod static function create_socket(client:Client):Dynamic;
     @:luaDotMethod static function socket_connect(socket:Dynamic):SocketConnectResult;
-    @:luaDotMethod static function sync(func:Void->Void):Void;
+    @:luaDotMethod static function on_matchpresence(socket:Dynamic, callback:Message->Void):Void;
+    @:luaDotMethod static function on_matchdata(socket:Dynamic, callback:Message->Void):Void;
 
 }
 
@@ -45,5 +47,9 @@ typedef Account = {
 
     var success:Bool;
     var error:String;
+
+}
+
+extern class Message {
 
 }
