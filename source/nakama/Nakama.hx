@@ -1,5 +1,7 @@
 package nakama;
 
+import nakama.Socket.SocketConnectResult;
+
 @:native("_G.__nakama")
 extern class Nakama {
 
@@ -14,6 +16,8 @@ extern class Nakama {
     @:luaDotMethod static function authenticate_device(client:Client, body_api_account_device:Dynamic, ?create:Bool, ?username:String, ?callback:Dynamic->Void):Dynamic;
     @:luaDotMethod static function authenticate_email(client:Client, body_api_account_email:Dynamic, ?create:Bool, ?username:String, ?callback:Dynamic->Void):Dynamic;
     @:luaDotMethod static function set_bearer_token(client:Client, bearer_token:Dynamic):Void;
+    @:luaDotMethod static function create_socket(client:Client):Dynamic;
+    @:luaDotMethod static function socket_connect(socket:Dynamic):SocketConnectResult;
     @:luaDotMethod static function sync(func:Void->Void):Void;
 
 }
