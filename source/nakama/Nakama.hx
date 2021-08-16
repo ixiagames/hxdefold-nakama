@@ -1,7 +1,5 @@
 package nakama;
 
-import nakama.Socket.SocketConnectResult;
-
 @:native("_G.__nakama")
 extern class Nakama {
 
@@ -19,5 +17,33 @@ extern class Nakama {
     @:luaDotMethod static function create_socket(client:Client):Dynamic;
     @:luaDotMethod static function socket_connect(socket:Dynamic):SocketConnectResult;
     @:luaDotMethod static function sync(func:Void->Void):Void;
+
+}
+
+typedef ClientConfig = {
+
+    host:String,
+    port:Int,
+    use_ssl:Bool,
+    username:String,
+    password:String,
+    ?engine:Dynamic
+
+}
+
+extern class Client {
+    
+}
+
+typedef Account = {
+
+    user_id:String,
+    
+}
+
+@:multiReturn extern class SocketConnectResult {
+
+    var success:Bool;
+    var error:String;
 
 }
