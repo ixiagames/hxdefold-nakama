@@ -17,6 +17,7 @@ extern class Nakama {
     @:luaDotMethod static function set_bearer_token(client:Client, bearer_token:Dynamic):Void;
     @:luaDotMethod static function create_socket(client:Client):Dynamic;
     @:luaDotMethod static function socket_connect(socket:Dynamic):SocketConnectResult;
+    @:luaDotMethod static function socket_send(socket:Dynamic, message:Message):Dynamic;
     @:luaDotMethod static function on_matchpresence(socket:Dynamic, callback:Message->Void):Void;
     @:luaDotMethod static function on_matchdata(socket:Dynamic, callback:Message->Void):Void;
 
