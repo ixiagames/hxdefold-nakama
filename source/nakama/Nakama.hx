@@ -3,7 +3,7 @@ package nakama;
 @:native("_G.__nakama")
 extern class Nakama {
 
-    public static inline function require():Void {
+    static inline function require():Void {
         untyped __lua__('_G.__nakama = require "nakama.nakama"');
     }
 
@@ -20,8 +20,9 @@ extern class Nakama {
 
     @:luaDotMethod static function create_socket(client:Client):Socket;
     @:luaDotMethod static function socket_connect(socket:Socket):SocketConnectResult;
-    @:luaDotMethod static function socket_send(socket:Socket, message:Dynamic):Dynamic;
+    @:luaDotMethod static function socket_send(socket:Socket, message:Dynamic):SocketSendResult;
 
+    @:luaDotMethod static function on_matchmakermatched(socket:Dynamic, callback:MatchMakerMatchedMessage->Void):Void;
     @:luaDotMethod static function on_matchpresence(socket:Dynamic, callback:MatchPresenceMessage->Void):Void;
     @:luaDotMethod static function on_matchdata(socket:Dynamic, callback:MatchMessage->Void):Void;
 
@@ -44,18 +45,36 @@ typedef ClientConfig = {
 
 extern class Client { }
 extern class Socket { }
-extern class MatchMakerTicket { }
 
 extern class Account {
 
-    public var user_id(default, never):String;
+    var user_id(default, never):String;
 
 }
 
 @:multiReturn extern class SocketConnectResult {
 
-    var success:Bool;
-    var error:String;
+    var success(default, never):Bool;
+    var error(default, never):String;
+
+}
+
+extern class SocketSendResult {
+
+    var success(default, never):{ cid:Int, matchmaker_ticket:MatchMakerTicket }
+    var error(default, never):String;
+
+}
+
+extern class MatchMakerTicket {
+
+    var ticket(default, null):String;
+
+}
+
+extern class MatchMakerMatchedMessage {
+    
+    var matchmaker_matched(default, null):{ match_id:String, token:Dynamic };
 
 }
 
@@ -65,7 +84,7 @@ extern class MatchPresenceMessage {
 
 extern class MatchMessage {
 
-    public var op_code(default, never):Int;
-    public var match_data(default, never):Dynamic;
+    var op_code(default, never):Int;
+    var match_data(default, never):Dynamic;
 
 }
