@@ -17,9 +17,10 @@ extern class Nakama {
     @:luaDotMethod static function set_bearer_token(client:Client, bearer_token:Dynamic):Void;
     @:luaDotMethod static function create_socket(client:Client):Dynamic;
     @:luaDotMethod static function socket_connect(socket:Dynamic):SocketConnectResult;
-    @:luaDotMethod static function socket_send(socket:Dynamic, message:Message):Dynamic;
-    @:luaDotMethod static function on_matchpresence(socket:Dynamic, callback:Message->Void):Void;
-    @:luaDotMethod static function on_matchdata(socket:Dynamic, callback:Message->Void):Void;
+    @:luaDotMethod static function socket_send(socket:Dynamic, message:Dynamic):Dynamic;
+    @:luaDotMethod static function on_matchpresence(socket:Dynamic, callback:MatchPresenceMessage->Void):Void;
+    @:luaDotMethod static function on_matchdata(socket:Dynamic, callback:MatchMessage->Void):Void;
+    @:luaDotMethod static function create_matchmaker_add_message(query:String, min_count:Int, max_count:Int, ?string_properties:Int, ?numeric_properties:Int):Dynamic;
 
 }
 
@@ -51,6 +52,13 @@ typedef Account = {
 
 }
 
-extern class Message {
+extern class MatchPresenceMessage {
+    
+}
+
+extern class MatchMessage {
+
+    public var op_code(default, never):Int;
+    public var match_data(default, never):Dynamic;
 
 }
