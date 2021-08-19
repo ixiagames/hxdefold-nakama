@@ -72,9 +72,26 @@ extern class MatchMakerTicket {
 
 }
 
+extern class MatchPresence {
+    
+    var session_id(default, null):String;
+    var user_id(default, null):String;
+    var username(default, null):String;
+
+}
+
+extern class MatchMakerMatched {
+    
+    var match_id(default, null):String;
+    var ticket(default, null):String;
+    var self(default, null):MatchPresence;
+    var users(default, null):Array<MatchPresence>;
+
+}
+
 extern class MatchMakerMatchedMessage {
     
-    var matchmaker_matched(default, null):{ match_id:String, token:Dynamic };
+    var matchmaker_matched(default, null):{ match_id:String, ticket:String };
 
 }
 
