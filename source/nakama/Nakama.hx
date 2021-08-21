@@ -28,6 +28,7 @@ extern class Nakama {
 
     @:luaDotMethod static function create_matchmaker_add_message(query:String, min_count:Int, max_count:Int, ?string_properties:Int, ?numeric_properties:Int):Dynamic;
     @:luaDotMethod static function create_matchmaker_remove_message(ticket:MatchMakerTicket):Dynamic;
+    @:luaDotMethod static function create_match_join_message(match_id:String, token:Dynamic):Dynamic;
     @:luaDotMethod static function create_match_data_message(match_id:String, op_code:Int, data:String):Dynamic;
 
 }
@@ -84,7 +85,7 @@ extern class MatchMakerMatched {
     
     var match_id(default, null):String;
     var ticket(default, null):String;
-    var token(default, null):String; // The xoxo example has this but this wasn't available when I tried. Isn't this ticket?
+    var token(default, null):Dynamic;
     var self(default, null):MatchPresence;
     var users(default, null):Array<MatchPresence>;
 
@@ -92,7 +93,7 @@ extern class MatchMakerMatched {
 
 extern class MatchMakerMatchedMessage {
     
-    var matchmaker_matched(default, null):{ match_id:String, ticket:String };
+    var matchmaker_matched(default, null):MatchMakerMatched;
 
 }
 
