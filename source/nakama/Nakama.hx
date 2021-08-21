@@ -84,6 +84,7 @@ extern class MatchMakerMatched {
     
     var match_id(default, null):String;
     var ticket(default, null):String;
+    var token(default, null):String; // The xoxo example has this but this wasn't available when I tried. Isn't this ticket?
     var self(default, null):MatchPresence;
     var users(default, null):Array<MatchPresence>;
 
