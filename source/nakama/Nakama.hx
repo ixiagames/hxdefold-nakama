@@ -5,11 +5,15 @@ import nakama.Socket;
 @:native("_G.__nakama")
 extern class Nakama {
 
-    static inline function init():Void {
+    static inline function init(log:Bool = false, json:Bool = true):Void {
         untyped __lua__('_G.__nakama = require "nakama.nakama"');
         untyped __lua__('_G.__nakama_defold = require "nakama.engine.defold"');
+        if (log)
+            untyped __lua__('_G.__nakama_log = require "nakama.util.log"');
+        if (json)
+            untyped __lua__('_G.__nakama_json = require "nakama.util.json"');
     }
-
+    
     @:luaDotMethod static function sync(func:Void->Void):Void;
 
     @:luaDotMethod static function create_client(config:ClientConfig):Client;
