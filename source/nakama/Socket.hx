@@ -8,3 +8,10 @@ extern class Socket { }
     var error(default, never):String;
 
 }
+
+extern class SocketMatchMakerAddResult {
+    
+    var match(default, null):Match;
+    var cid(default, null):String;
+
+}
