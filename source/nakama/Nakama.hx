@@ -54,6 +54,10 @@ extern class MatchMakerMatchedMessage {
 
 extern class MatchPresenceMessage {
     
+    var match_id(default, null):String;
+    var joins(default, null):Array<MatchPresence>;
+    var leaves(default, null):Array<MatchPresence>;
+
 }
 
 extern class MatchMessage {
