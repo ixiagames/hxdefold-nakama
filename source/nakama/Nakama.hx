@@ -1,5 +1,6 @@
 package nakama;
 
+import lua.Table;
 import nakama.Socket;
 
 @:native("_G.__nakama")
@@ -42,25 +43,30 @@ extern class Nakama {
 
 extern class MatchMakerMatched {
     
-    var match_id(default, null):String;
-    var ticket(default, null):String;
-    var token(default, null):Dynamic;
-    var self(default, null):MatchPresence;
-    var users(default, null):Array<MatchPresence>;
+    var match_id(default, never):String;
+    var ticket(default, never):String;
+    var token(default, never):Dynamic;
+    var self(default, never):MatchPresence;
+    var users(default, never):Array<MatchPresence>;
 
 }
 
 extern class MatchMakerMatchedMessage {
     
-    var matchmaker_matched(default, null):MatchMakerMatched;
+    var matchmaker_matched(default, never):MatchMakerMatched;
 
 }
 
 extern class MatchPresenceMessage {
     
-    var match_id(default, null):String;
-    var joins(default, null):Array<MatchPresence>;
-    var leaves(default, null):Array<MatchPresence>;
+   var match_presence_event(default, never):MatchPresenceMessageData;
+
+}
+extern class MatchPresenceMessageData {
+    
+    var match_id(default, never):String;
+    var joins(default, never):Table<Int, MatchPresence>;
+    var leaves(default, never):Table<Int, MatchPresence>;
 
 }
 
