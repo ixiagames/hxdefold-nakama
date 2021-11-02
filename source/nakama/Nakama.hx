@@ -59,10 +59,10 @@ extern class MatchMakerMatchedMessage {
 
 extern class MatchPresenceMessage {
     
-   var match_presence_event(default, never):MatchPresenceMessageData;
+   var match_presence_event(default, never):MatchPresenceEvent;
 
 }
-extern class MatchPresenceMessageData {
+extern class MatchPresenceEvent {
     
     var match_id(default, never):String;
     var joins(default, never):Table<Int, MatchPresence>;
@@ -73,6 +73,14 @@ extern class MatchPresenceMessageData {
 extern class MatchMessage {
 
     var op_code(default, never):Int;
-    var match_data(default, never):Dynamic;
+    var match_data(default, never):MatchData;
 
+}
+extern class MatchData {
+
+    public var reliable(default, never):Bool;
+    public var op_code(default, never):String;
+    public var match_id(default, never):String;
+    public var data(default, never):Dynamic;
+    
 }
