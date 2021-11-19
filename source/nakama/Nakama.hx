@@ -36,7 +36,7 @@ extern class Nakama {
 
     @:luaDotMethod static function create_matchmaker_add_message(query:String, min_count:Int, max_count:Int, ?string_properties:Int, ?numeric_properties:Int):Dynamic;
     @:luaDotMethod static function create_matchmaker_remove_message(ticket:{ ticket:String }):Dynamic;
-    @:luaDotMethod static function create_match_join_message(match_id:String, token:Dynamic):Dynamic;
+    @:luaDotMethod static function create_match_join_message(?match_id:String, ?token:Dynamic):Dynamic;
     @:luaDotMethod static function create_match_data_message(match_id:String, op_code:Int, data:String):Dynamic;
 
     @:luaDotMethod static function rpc_func(client:Client, func_id:String, ?body:Dynamic, ?http_key:String, ?callback:Dynamic->Void):{ payload:String };
