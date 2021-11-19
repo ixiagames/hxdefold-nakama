@@ -39,6 +39,9 @@ extern class Nakama {
     @:luaDotMethod static function create_match_join_message(match_id:String, token:Dynamic):Dynamic;
     @:luaDotMethod static function create_match_data_message(match_id:String, op_code:Int, data:String):Dynamic;
 
+    @:luaDotMethod static function rpc_func(client:Client, func_id:String, body:Dynamic, ?http_key:String, ?callback:Dynamic->Void):Dynamic;
+    @:luaDotMethod static function rpc_func2(client:Client, func_id:String, payload:String, ?http_key:String, ?callback:Dynamic->Void):Dynamic;
+
 }
 
 extern class MatchMakerMatched {
