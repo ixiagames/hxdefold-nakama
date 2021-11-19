@@ -9,7 +9,7 @@ extern class Socket { }
 
 }
 
-extern class SocketMatchMakerAddResult {
+extern class SocketMatchJoinResult {
     
     var match(default, null):Match;
     var cid(default, null):String;
