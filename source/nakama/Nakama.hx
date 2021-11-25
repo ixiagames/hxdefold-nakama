@@ -19,7 +19,7 @@ extern class Nakama {
 
     @:luaDotMethod static function create_client(config:ClientConfig):Client;
     @:luaDotMethod static function get_account(client:Client, ?callback:Account->Void):Dynamic;
-    @:luaDotMethod static function authenticate_device(client:Client, body_api_account_device:Dynamic, ?create:Bool, ?username:String, ?callback:Dynamic->Void):{ token:Dynamic, error:Bool, code:Int, message:String };
+    @:luaDotMethod static function authenticate_device(client:Client, body_api_account_device:Dynamic, ?create:Bool, ?username:String, ?callback:Dynamic->Void):AuthDeviceResult;
     @:luaDotMethod static function authenticate_email(client:Client, body_api_account_email:Dynamic, ?create:Bool, ?username:String, ?callback:Dynamic->Void):Dynamic;
     @:luaDotMethod static function set_bearer_token(client:Client, bearer_token:Dynamic):Void;
 
@@ -41,6 +41,15 @@ extern class Nakama {
 
     @:luaDotMethod static function rpc_func(client:Client, func_id:String, ?body:Dynamic, ?http_key:String, ?callback:Dynamic->Void):{ payload:String };
     @:luaDotMethod static function rpc_func2(client:Client, func_id:String, ?payload:String, ?http_key:String, ?callback:Dynamic->Void):{ payload:String };
+
+}
+
+extern class AuthDeviceResult {
+    
+    var token(default, never):Dynamic;
+    var error(default, never):Bool;
+    var code(default, never):Int;
+    var message(default, never):String;
 
 }
 
