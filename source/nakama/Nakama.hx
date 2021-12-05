@@ -94,6 +94,6 @@ extern class MatchData {
     public var reliable(default, never):Bool;
     public var op_code(default, never):String;
     public var match_id(default, never):String;
-    public var data(default, never):Dynamic;
+    public var data(default, never):String;
     
 }
