@@ -86,7 +86,6 @@ extern class MatchPresenceEvent {
 
 extern class MatchMessage {
 
-    var op_code(default, never):Int;
     var match_data(default, never):MatchData;
 
 }
