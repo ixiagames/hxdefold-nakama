@@ -30,9 +30,11 @@ extern class Nakama {
     @:luaDotMethod static function socket_connect(socket:Socket):SocketConnectResult;
     @:luaDotMethod static function socket_send(socket:Socket, message:Dynamic):Dynamic;
 
-    @:luaDotMethod static function on_matchmakermatched(socket:Dynamic, callback:MatchMakerMatchedMessage->Void):Void;
-    @:luaDotMethod static function on_matchpresence(socket:Dynamic, callback:MatchPresenceMessage->Void):Void;
-    @:luaDotMethod static function on_matchdata(socket:Dynamic, callback:MatchMessage->Void):Void;
+    @:luaDotMethod static function on_disconnect(socket:Socket, callback:Dynamic->Void):Void;
+    @:luaDotMethod static function on_matchmakermatched(socket:Socket, callback:MatchMakerMatchedMessage->Void):Void;
+    @:luaDotMethod static function on_matchpresence(socket:Socket, callback:MatchPresenceMessage->Void):Void;
+    @:luaDotMethod static function on_matchdata(socket:Socket, callback:MatchMessage->Void):Void;
+    @:luaDotMethod static function on_error(socket:Socket, callback:Dynamic->Void):Void;
 
     @:luaDotMethod static function create_matchmaker_add_message(query:String, min_count:Int, max_count:Int, ?string_properties:Int, ?numeric_properties:Int):Dynamic;
     @:luaDotMethod static function create_matchmaker_remove_message(ticket:{ ticket:String }):Dynamic;
